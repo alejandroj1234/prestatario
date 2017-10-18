@@ -11,6 +11,38 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="main-container" class="container">
+
+      <% if notice.present? %>
+        <div class="alert alert-info">
+          <a href = "#" class = "close" data-dismiss = "alert">
+            &times;
+          </a>
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="alert alert-danger">
+          <a href = "#" class = "close" data-dismiss = "alert">
+            &times;
+          </a>
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <%= render "header" %>
+
+      <div class="row">
+        <div id="sidebar" class="col-md-2">
+          <%= render "sidebar" %>
+        </div>
+        <div id="main-content" class="col-md-10">
+          <%= yield %>
+        </div>
+      </div>
+
+      <%= render "footer" %>
+
+    </div>
   </body>
 </html>

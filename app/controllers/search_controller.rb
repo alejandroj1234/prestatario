@@ -1,4 +1,4 @@
-class DashboardController < ApplicationController
+class SearchController < ApplicationController
   before_action :authenticate_user!
 
   def index
