@@ -8,41 +8,43 @@
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag "application" %>
     <%= stylesheet_pack_tag "application" %>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700,900" rel="stylesheet">
   </head>
 
-  <body>
-    <div id="main-container" class="container">
+  <body id="main-content-body">
 
-      <% if notice.present? %>
-        <div class="alert alert-info">
-          <a href = "#" class = "close" data-dismiss = "alert">
-            &times;
-          </a>
-          <%= notice %>
-        </div>
-      <% end %>
-      <% if alert.present? %>
-        <div class="alert alert-danger">
-          <a href = "#" class = "close" data-dismiss = "alert">
-            &times;
-          </a>
-          <%= alert %>
-        </div>
-      <% end %>
+    <% if notice.present? %>
+      <div class="alert alert-info" id="alert-info">
+        <a href = "#" class = "close" data-dismiss = "alert">
+          &times;
+        </a>
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert.present? %>
+      <div class="alert alert-danger" id="alert-danger">
+        <a href = "#" class = "close" data-dismiss = "alert">
+          &times;
+        </a>
+        <%= alert %>
+      </div>
+    <% end %>
 
-      <%= render "header" %>
+    <%= render "header" %>
 
+    <div id="main-container" class="container-fluid clearfix">
       <div class="row">
-        <div id="sidebar" class="col-md-2">
+        <div  class="col-md-2 pull-left" >
           <%= render "sidebar" %>
         </div>
-        <div id="main-content" class="col-md-10">
+
+        <div class="col-md-10 pull-right">
           <%= yield %>
         </div>
       </div>
-
-      <%= render "footer" %>
-
     </div>
+
+    <%= render "footer" %>
+
   </body>
 </html>
