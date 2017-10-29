@@ -1,0 +1,28 @@
+<section>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <header >
+                <h1>
+                    Add a tool
+                </h1>
+            </header>
+            <h4 class="page-header">Primary Information</h4>
+            <form #addTool="ngForm" (ngSubmit)="onSubmit(addTool.value); addTool.reset()">
+                <div class="form-group float-label-control">
+                    <label for="toolNameInput">Tool Name</label>
+                    <input type="text" class="form-control" name="tool-name" id="toolNameInput" ngModel>
+                </div>
+                <div class="form-group float-label-control">
+                    <label for="toolMakeInput">Tool Make</label>
+                    <input type="text" class="form-control" name="tool-make" id="toolMakeInput" ngModel>
+                </div>
+                <div class="form-group float-label-control">
+                    <label for="toolModelInput">Tool Model</label>
+                    <input type="text" class="form-control" name="tool-model" id="toolModelInput" ngModel>
+                </div>
+                <button class="btn btn-lg btn-primary pull-right" type="submit"></button>
+            </form>
+        </div>
+    </div>
+</section>
+

@@ -20,9 +20,18 @@ Rails.application.routes.draw do
 
   # Routes for links in the sidebar
   get "dashboard", to: "dashboard#index"
-  get "borrowed", to: "borrowed#index"
-  get "lent", to: "lent#index"
-  get "search", to: "search#index"
-  get "inventory", to: "inventory#index"
-  get "messages", to: "messages#index"
+  get "borrowed",  to: "borrowed#index"
+  get "lent",      to: "lent#index"
+  get "search",    to: "search#index"
+  get "tools",     to: "tools#index"
+  get "messages",  to: "messages#index"
+
+  # Routes for Tools
+  get    "tools/ng",                to: "tools#ng"
+  get    "tools/ng/*angular_route", to: "tools#ng"
+  get    "tools/ng/addTool",        to: "tools#ng/addTool"
+  post   "tools/ng/addTool",       action:"create",  controller:"tools"
+  delete "tools/*",                action:"destroy", controller:"tools"
+  put    "tools/ng/viewTools/*id", action:"update",  controller:"tools"
+  resources :tools, only: [ :index, :create, :update, :destroy ]
 end

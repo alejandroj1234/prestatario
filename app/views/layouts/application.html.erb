@@ -5,17 +5,19 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag "application" %>
     <%= stylesheet_pack_tag "application" %>
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,700,900" rel="stylesheet">
+    <% if @base_url %>
+      <base href="<%= @base_url %>">
+    <% end %>
   </head>
 
   <body id="main-content-body">
 
     <% if notice.present? %>
       <div class="alert alert-info" id="alert-info">
-        <a href = "#" class = "close" data-dismiss = "alert">
+        <a href = "#" class = "close" data-dismiss = "alert-info">
           &times;
         </a>
         <%= notice %>

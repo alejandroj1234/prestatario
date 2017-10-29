@@ -8,12 +8,12 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import "./application.css";
-import "bootstrap/dist/css/bootstrap.css";
+import "jquery/dist/jquery.js";
 import "bootstrap/dist/css/bootstrap.css";
 import "animate.css/animate.css";
 import "font-awesome/css/font-awesome.min.css";
-import "jquery/dist/jquery.min.js";
 import "wowjs/dist/wow.js";
 import {WOW} from 'wowjs';
+
 
 new WOW().init();
