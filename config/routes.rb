@@ -26,6 +26,9 @@ Rails.application.routes.draw do
   get "tools",     to: "tools#index"
   get "messages",  to: "messages#index"
 
+  # Route for profiles link in header
+  get "profiles",  to: "profiles#index"
+
   # Routes for Tools
   get    "tools/ng",                to: "tools#ng"
   get    "tools/ng/*angular_route", to: "tools#ng"
@@ -34,4 +37,9 @@ Rails.application.routes.draw do
   delete "tools/*",                action:"destroy", controller:"tools"
   put    "tools/ng/viewTools/*id", action:"update",  controller:"tools"
   resources :tools, only: [ :index, :create, :update, :destroy ]
+
+  # Routes for Profile
+  get    "profiles",     to: "profiles#index"
+  put    "profiles",     action:"update",  controller:"profiles"
+  resources :profiles, only: [:index, :update ]
 end
