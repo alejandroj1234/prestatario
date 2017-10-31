@@ -1,0 +1,43 @@
+<section>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <header>
+                <h1>Search for Tools</h1>
+            </header>
+            <section class="search-form">
+                <form>
+                    <label for="keywords" class="sr-only">Keywords</label>
+                    <input type="text" id="keywords" name="keywords"
+                       placeholder="Tool Name, Tool Make, or Tool Model"
+                       bind-ngModel="keywords"
+                       on-ngModelChange="search($event)"
+                       class="form-control input-lg">
+                </form>
+            </section>
+            </br>
+            </br>
+            </br>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Tool Name</th>
+                    <th>Tool Make</th>
+                    <th>Tool Model</th>
+                    <th>Tool Owner</th>
+                    <th>View Details</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let tool of tools">
+                    <td>{{tool.tool_name}}</td>
+                    <td>{{tool.tool_make}}</td>
+                    <td>{{tool.tool_model}}</td>
+                    <td>{{tool.owner}}</td>
+                    <td><button class="btn btn-small btn-primary" on-click="viewSearchDetails(tool)" View Search></button></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+

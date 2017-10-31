@@ -4,7 +4,12 @@ class ProfilesController < ApplicationController
 
   def index
     @@current_user_id = current_user.id
-    @profile = Profile.where(user_id: @@current_user_id).first
+    if params[:user_id].present?
+      @profile = Profile.where(user_id: params[:user_id]).first
+    else
+      @profile = Profile.where(user_id: @@current_user_id).first
+    end
+
 
     if @profile.nil?
       Profile.create!(user_id: @@current_user_id)

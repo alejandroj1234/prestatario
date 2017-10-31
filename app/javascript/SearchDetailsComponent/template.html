@@ -1,0 +1,26 @@
+<section>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <header>
+                <h1>
+                    Tool Details
+                </h1>
+            </header>
+            <div class="list-group col-md-4 pull-right" >
+                <div class="panel-heading">Tool Details </div>
+                <p class="list-group-item">{{tool.tool_name}}</p>
+                <p class="list-group-item">{{tool.tool_make}}</p>
+                <p class="list-group-item">{{tool.tool_model}}</p>
+            </div>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="list-group col-md-4 pull-right">
+                <div class="panel-heading">Tool Owner Details</div>
+                <p class="list-group-item">{{profile.first_name}}</p>
+                <p class="list-group-item">{{profile.last_name}}</p>
+                <p class="list-group-item">{{profile.user_name}}</p>
+                <button class="btn btn-small btn-primary" on-click="requestBorrow(tool)" Request To Borrow></button>
+            </div>
+        </div>
+    </div>
+</section>

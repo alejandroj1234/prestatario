@@ -40,6 +40,11 @@ Rails.application.routes.draw do
 
   # Routes for Profile
   get    "profiles",     to: "profiles#index"
-  put    "profiles",     action:"update",  controller:"profiles"
-  resources :profiles, only: [:index, :update ]
+  put    "profiles",     action:"update",       controller:"profiles"
+  resources :profiles, only: [:index, :update, :show_profile ]
+
+  # Route for Search
+  get    "search/mk",                to: "search#mk"
+  get    "search/mk/*angular_route", to: "search#mk"
+  resources :search, only: [ :index ]
 end
