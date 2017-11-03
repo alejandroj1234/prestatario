@@ -3,15 +3,16 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="border-form-div">
         <header>
-          <h1>Log In</h1>
+          <h1>Log in</h1>
         </header>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-group float-label-control">
-            <%= f.label :email %>
+          <div class="form-group">
+            <%= f.label :email %><br />
             <%= f.email_field :email, autofocus: true, class: "form-control" %>
           </div>
-          <div class="form-group float-label-control">
-            <%= f.label :password %>
+
+          <div class="form-group">
+            <%= f.label :password %><br />
             <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
           </div>
           <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />

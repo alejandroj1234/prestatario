@@ -15,8 +15,7 @@
           current_page?(search_mk_path) ||
           current_page?(tools_ng_path) ||
           current_page?(messages_path) ||
-          current_page?(edit_user_registration_path) ||
-          current_page?(profiles_path)
+          current_page?(edit_user_registration_path)
       %>
         <%= link_to 'Prestatario', dashboard_path, class: 'navbar-brand scrollTo', id: 'navbar-brand' %>
       <% end %>
@@ -49,12 +48,8 @@
             current_page?(search_mk_path) ||
             current_page?(tools_ng_path) ||
             current_page?(messages_path) ||
-            current_page?(edit_user_registration_path) ||
-            current_page?(profiles_path)
+            current_page?(edit_user_registration_path)
         %>
-          <li>
-            <%= link_to "User Profile", profiles_path %>
-          </li>
           <li>
             <%= link_to "Account", edit_user_registration_path %>
           </li>
