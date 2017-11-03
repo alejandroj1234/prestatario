@@ -8,49 +8,49 @@
           <%= devise_error_messages! %>
           <div class="row">
             <div class="col-md-6">
-              <div class="form-group">
-                <%= f.label :first_name %>
+              <div class="form-group float-label-control">
+              <%= f.label :first_name %>
                 <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
               </div>
 
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :last_name %>
                 <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
               </div>
 
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :street %>
                 <%= f.text_field :street, autofocus: true, class: "form-control" %>
               </div>
 
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :apartment_number %>
                 <%= f.text_field :apartment_number, autofocus: true, class: "form-control" %>
               </div>
 
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :city %>
                 <%= f.text_field :city, autofocus: true, class: "form-control" %>
               </div>
 
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :state %>
                 <%= f.text_field :state, autofocus: true, class: "form-control" %>
               </div>
 
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :zip_code %>
                 <%= f.text_field :zip_code, autofocus: true, class: "form-control" %>
               </div>
             </div>
 
             <div class="col-md-6">
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :phone %>
                 <%= f.text_field :phone, autofocus: true, class: "form-control" %>
               </div>
 
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :email %>
                 <%= f.email_field :email, autofocus: true, class: "form-control" %>
               </div>
@@ -59,7 +59,7 @@
                   <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
               <% end %>
 
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
                 <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
                 <% if @minimum_password_length %>
@@ -67,12 +67,12 @@
                 <% end %>
               </div>
 
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :password_confirmation %>
                 <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
               </div>
 
-              <div class="form-group">
+              <div class="form-group float-label-control">
                 <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
                 <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
               </div>

@@ -35,4 +35,9 @@ Rails.application.routes.draw do
   put    "tools/ng/viewTools/*id", action:"update",  controller:"tools"
   resources :tools, only: [ :index, :create, :update, :destroy ]
 
+  # Route for Search
+  get    "search/mk",                to: "search#mk"
+  get    "search/mk/*angular_route", to: "search#mk"
+  resources :search, only: [ :index ]
+
 end
