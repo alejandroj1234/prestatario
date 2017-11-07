@@ -1,0 +1,40 @@
+<section>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <ul  class="nav nav-pills">
+                <li><a on-click="viewRequestsAcceptedBorrow()" data-toggle="tab">Accepted Borrowed Requests</a>
+                </li>
+                <li><a on-click="viewRequestsPendingBorrow()" data-toggle="tab">Pending Borrowed Requests</a>
+                </li>
+                <li><a on-click="viewRequestsRejectedBorrow()" data-toggle="tab">Rejected Borrowed Requests</a>
+                </li>
+                <li><a on-click="viewRequestsAcceptedLend()" data-toggle="tab">Accepted Lent Requests</a>
+                </li>
+                <li><a on-click="viewRequestsPendingLend()" data-toggle="tab">Pending Lent Requests</a>
+                </li>
+                <li><a on-click="viewRequestsRejectedLend()" data-toggle="tab">Rejected Lent Requests</a>
+                </li>
+            </ul>
+            <header>
+                <h1>Manage Your Accepted Borrow Requests</h1>
+            </header>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Tool Name</th>
+                    <th>Requester's Name</th>
+                    <th>Request Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let request of requests" >
+                    <td>{{request.tool.tool_name}}</td>
+                    <td>{{request.requester.first_name}}</td>
+                    <td>{{request.tool_use}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+

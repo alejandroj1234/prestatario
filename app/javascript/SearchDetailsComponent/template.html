@@ -18,8 +18,19 @@
                 <div class="panel-heading">Tool Owner Details</div>
                 <p class="list-group-item">{{profile.first_name}}</p>
                 <p class="list-group-item">{{profile.last_name}}</p>
-                <p class="list-group-item">{{profile.user_name}}</p>
-                <button class="btn btn-small btn-primary" on-click="requestBorrow(tool)" Request To Borrow></button>
+                <p class="list-group-item">{{profile.phone}}</p>
+            </div>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="list-group col-md-4 pull-right">
+                <h4 class="page-header">Request To Borrow</h4>
+                <form #requestTool="ngForm" (ngSubmit)="onSubmit(requestTool.value); requestTool.reset()">
+                    <div class="form-group float-label-control">
+                        <label for="requestUseInput">Intended Use For Tool</label>
+                        <input type="text" class="form-control" name="request-use" id="requestUseInput" ngModel>
+                    </div>
+                    <button class="btn btn-lg btn-primary pull-right" type="submit"></button>
+                </form>
             </div>
         </div>
     </div>
