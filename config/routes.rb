@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   get "lent",      to: "lent#index"
   get "search",    to: "search#index"
   get "tools",     to: "tools#index"
-  get "requests",  to: "requests#index"
+  get "messages",  to: "messages#index"
 
   # Routes for Tools
   get    "tools/ng",                to: "tools#ng"
@@ -35,27 +35,9 @@ Rails.application.routes.draw do
   put    "tools/ng/viewTools/*id", action:"update",  controller:"tools"
   resources :tools, only: [ :index, :create, :update, :destroy ]
 
-  # Routes for Search
+  # Route for Search
   get    "search/mk",                to: "search#mk"
   get    "search/mk/*angular_route", to: "search#mk"
   resources :search, only: [ :index ]
 
-  # Routes for Requests
-  get    "requests/rq",                  to: "requests#rq"
-  get    "requests/rq/pendingBorrow",    to: "requests#rq/pendingBorrow"
-  get    "requests/rq/rejectedBorrow",   to: "requests#rq/rejectedBorrow"
-  get    "requests/rq/acceptedLend",     to: "requests#rq/acceptedLend"
-  get    "requests/rq/pendingLend",      to: "requests#rq/pendingLend"
-  get    "requests/rq/rejectedLend",     to: "requests#rq/rejectedLend"
-  post   "requests",                                 action:"create",  controller:"requests"
-  put    "requests/rq/statusUpdate/*status/*id",     action:"update",  controller:"requests"
-  resources :requests, only: [ :index ]
-
-  # Routes for profiles
-  get    "profiles",                to:"profiles#index"
-  resources :profiles, only: [ :index ]
-
 end
-
-
-
