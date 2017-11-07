@@ -12,8 +12,9 @@ var SearchDetailsComponent = Component({
         ActivatedRoute,
         function(http, activatedRoute) {
             this.activatedRoute = activatedRoute;
-            this.id             = null;
             this.http           = http;
+            this.id             = null;
+            this.tool           = null;
         }
     ],
     ngOnInit: function()  {
@@ -38,10 +39,18 @@ var SearchDetailsComponent = Component({
             );
         })
     },
-    requestBorrow: function(tool) {
-        console.log(tool)
-    }
+    onSubmit(form: any) {
+        var self = this;
+        form["tool_id"] = self.tool.id;
+        form["requester_id"] = self.tool.user_id;
+        self.http.post(
+            "/requests", form
+        ).subscribe(
+            function(response) {
 
+            }
+        );
+    },
 });
 
 export { SearchDetailsComponent };
