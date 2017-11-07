@@ -15,6 +15,23 @@ ActiveRecord::Schema.define(version: 20171102155500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "profiles", force: :cascade do |t|
+    t.string "user_name"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street"
+    t.string "apartment_number"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.string "phone"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+    t.index ["user_name"], name: "index_profiles_on_user_name", unique: true
+  end
+
   create_table "requests", force: :cascade do |t|
     t.string "tool_use", null: false
     t.bigint "requester_id", null: false
@@ -72,6 +89,7 @@ ActiveRecord::Schema.define(version: 20171102155500) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "profiles", "users"
   add_foreign_key "requests", "tools"
   add_foreign_key "tools", "users"
 end
