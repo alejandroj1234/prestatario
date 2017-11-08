@@ -17,7 +17,6 @@ class RequestsController < ApplicationController
       format.html {
         redirect_to requests_rq_path
       }
-
       format.json {
         render json: {
             requests: @requests.as_json(include: [:tool, :requestee, :requester])
@@ -29,6 +28,22 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     @request.update(status: params[:status].to_s)
+
+    if params[:status].to_s == 'accepted'
+      request_id = @request[:id]
+      tool_id = @request[:tool_id]
+      @tool = Tool.find(tool_id)
+
+      @tool.update(
+          tool_status: 'Lent'
+      )
+
+      BorrowedTool.create!(
+          request_id: request_id,
+          tool_id: tool_id,
+          user_id: params[:requestee_id]
+      )
+    end
 
     respond_to do |format|
       format.html { render :index }
@@ -50,6 +65,5 @@ class RequestsController < ApplicationController
       format.json { head :no_content  }
     end
   end
-
 end
 

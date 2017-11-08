@@ -4,7 +4,7 @@ import { Router            } from "@angular/router";
 import template              from "./template.html";
 
 var RequestsPendingBorrow = Component({
-    selector: "prestatario-requests-pending-borrowed-view",
+    selector: "prestatario-requests-pending-borrowed-tools-view",
     template: template
 }).Class({
     constructor: [

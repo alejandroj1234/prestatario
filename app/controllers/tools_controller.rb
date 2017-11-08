@@ -36,6 +36,7 @@ class ToolsController < ApplicationController
       tool_name: params[:"tool-name"],
       tool_make: params[:"tool-make"],
       tool_model: params[:"tool-model"],
+      tool_status: 'notLent',
       user_id: @@current_user_id
     )
 

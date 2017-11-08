@@ -4,7 +4,7 @@ import { Router            } from "@angular/router";
 import template              from "./template.html";
 
 var RequestsPendingLend = Component({
-    selector: "prestatario-requests-accepted-lent-view",
+    selector: "prestatario-requests-accepted-lent-tools-view",
     template: template
 }).Class({
     constructor: [
@@ -47,18 +47,17 @@ var RequestsPendingLend = Component({
     acceptRequest: function(request) {
         var self = this;
         self.http.put(
-            "/requests/rq/statusUpdate/" + "accepted/" + request.id
+            "/requests/rq/statusUpdate/" + "accepted/" + request.id + "/"  + request.requestee.id
         ).subscribe(
             function() {
                 self.ngOnInit()
             }
         );
     },
-    declineRequest: function(request) {
+    rejectRequest: function(request) {
         var self = this;
-        console.log(request.id)
         self.http.put(
-            "/requests/rq/statusUpdate/" + "rejected/" + request.id
+            "/requests/rq/statusUpdate/" + "rejected/" + request.id + "/" + request.requestee.id
         ).subscribe(
             function() {
                 self.ngOnInit()
