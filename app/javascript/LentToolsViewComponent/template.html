@@ -1,0 +1,30 @@
+<section>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <header>
+                <h1>Manage Your Lent Tools</h1>
+            </header>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Tool Name</th>
+                    <th>Tool Model </th>
+                    <th>Tool Make</th>
+                    <th>Tool Returned?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let lentTool of lentTools" >
+                    <td>{{lentTool.tool_name}}</td>
+                    <td>{{lentTool.tool_model}}</td>
+                    <td>{{lentTool.tool_make}}</td>
+                    <td><button class="btn btn-small btn-primary" on-click="toolReturned(lentTool)" ></button></td>
+                    <td>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+

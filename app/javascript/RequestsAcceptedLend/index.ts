@@ -4,7 +4,7 @@ import { Router            } from "@angular/router";
 import template              from "./template.html";
 
 var RequestsAcceptedLend = Component({
-    selector: "prestatario-requests-accepted-lent-view",
+    selector: "prestatario-requests-accepted-lent-tools-view",
     template: template
 }).Class({
     constructor: [

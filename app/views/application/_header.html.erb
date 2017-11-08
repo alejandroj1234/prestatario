@@ -10,8 +10,8 @@
         <%= link_to 'Prestatario', root_path, class: 'navbar-brand scrollTo', id: 'navbar-brand' %>
       <% end %>
       <% if current_page?(dashboard_path) ||
-          current_page?(borrowed_path) ||
-          current_page?(lent_path) ||
+          current_page?(borrowed_tools_path) ||
+          current_page?(lent_tools_path) ||
           current_page?(search_mk_path) ||
           current_page?(tools_ng_path) ||
           current_page?(requests_rq_path) ||
@@ -43,8 +43,8 @@
           </li>
         <% end %>
         <% if current_page?(dashboard_path) ||
-            current_page?(borrowed_path) ||
-            current_page?(lent_path) ||
+            current_page?(borrowed_tools_path) ||
+            current_page?(lent_tools_path) ||
             current_page?(search_mk_path) ||
             current_page?(tools_ng_path) ||
             current_page?(requests_rq_path) ||

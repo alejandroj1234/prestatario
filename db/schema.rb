@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171102155500) do
+ActiveRecord::Schema.define(version: 20171107221931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "borrowed_tools", force: :cascade do |t|
+    t.bigint "request_id"
+    t.bigint "tool_id"
+    t.bigint "user_id"
+    t.index ["request_id"], name: "index_borrowed_tools_on_request_id"
+    t.index ["tool_id"], name: "index_borrowed_tools_on_tool_id"
+    t.index ["user_id"], name: "index_borrowed_tools_on_user_id"
+  end
 
   create_table "requests", force: :cascade do |t|
     t.string "tool_use", null: false
@@ -36,6 +45,7 @@ ActiveRecord::Schema.define(version: 20171102155500) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "tool_status", default: "", null: false
     t.index ["tool_name"], name: "index_tools_on_tool_name", unique: true
     t.index ["user_id"], name: "index_tools_on_user_id"
   end
@@ -72,6 +82,9 @@ ActiveRecord::Schema.define(version: 20171102155500) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "borrowed_tools", "requests"
+  add_foreign_key "borrowed_tools", "tools"
+  add_foreign_key "borrowed_tools", "users"
   add_foreign_key "requests", "tools"
   add_foreign_key "tools", "users"
 end

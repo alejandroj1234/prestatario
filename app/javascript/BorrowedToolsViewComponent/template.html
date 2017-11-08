@@ -1,0 +1,26 @@
+<section>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <header>
+                <h1>Manage Your Borrowed Tools</h1>
+            </header>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Tool Name</th>
+                    <th>Tool Model </th>
+                    <th>Tool Make</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let borrowedTool of borrowedTools" >
+                    <td>{{borrowedTool.tool.tool_name}}</td>
+                    <td>{{borrowedTool.tool.tool_model}}</td>
+                    <td>{{borrowedTool.tool.tool_make}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
