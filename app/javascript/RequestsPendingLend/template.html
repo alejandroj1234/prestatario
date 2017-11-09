@@ -24,8 +24,7 @@
                     <th>Tool Name</th>
                     <th>Requestee's Name</th>
                     <th>Request Description</th>
-                    <th>Accept Request</th>
-                    <th>Decline Request</th>
+                    <th>Accept/Decline Request</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,9 +32,17 @@
                     <td>{{request.tool.tool_name}}</td>
                     <td>{{request.requestee.first_name}}</td>
                     <td>{{request.tool_use}}</td>
-                    <td><button class="btn btn-small btn-primary" on-click="acceptRequest(request)" Accept Request></button></td>
-                    <td><button class="btn btn-small btn-primary" on-click="rejectRequest(request)" Decline Request></button></td>
                     <td>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                Dropdown
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" >
+                                <li><button class="btn btn-small btn-primary" on-click="acceptRequest(request)" Accept Request></button></li>
+                                <li><button class="btn btn-small btn-primary" on-click="rejectRequest(request)" Decline Request></button></li>
+                            </ul>
+                        </div>
                     </td>
                 </tr>
                 </tbody>

@@ -1,18 +1,17 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  protect_from_forgery with: :null_session
+  protect_from_forgery prepend: true
 
   def index
-    @@current_user_id = current_user.id
     if params[:user_id].present?
       @profile = User.where(id: params[:user_id]).first
     else
-      @profile = User.where(id: @@current_user_id).first
+      @profile = User.where(id: current_user.id).first
     end
 
 
     if @profile.nil?
-      User.create!(user_id: @@current_user_id)
+      User.create!(user_id: current_user.id)
     end
 
     respond_to do |format|
