@@ -1,6 +1,6 @@
 class LentToolsController < ApplicationController
   before_action :authenticate_user!
-  protect_from_forgery with: :null_session
+  protect_from_forgery prepend: true
 
   def index
     @lentTools = Tool.where("user_id = ? AND tool_status = ?", current_user.id, 'Lent')

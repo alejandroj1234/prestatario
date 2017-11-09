@@ -1,6 +1,6 @@
 class BorrowedToolsController < ApplicationController
   before_action :authenticate_user!
-  protect_from_forgery with: :null_session
+  protect_from_forgery prepend: true
 
   def index
     @borrowedTools = BorrowedTool.includes(:tool).where("user_id = ?", current_user.id)

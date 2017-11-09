@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
+  after_action :set_csrf_cookie
+
+  # Allows cookies with csrf token to post delete update
+  def set_csrf_cookie
+    cookies['XSRF-TOKEN'] = form_authenticity_token if protect_against_forgery?
+  end
 
   # Used to direct users to dashboard after login
   def stored_location_for(resource)
@@ -38,5 +44,9 @@ class ApplicationController < ActionController::Base
         :email,
         :password,
         :current_password])
+  end
+
+  def verified_request?
+    super || valid_authenticity_token?(session, request.headers['X-XSRF-TOKEN'])
   end
 end

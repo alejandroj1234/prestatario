@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_action :authenticate_user!
-  protect_from_forgery with: :null_session
+  protect_from_forgery prepend: true
 
   def rq
     @base_url = "/requests/rq"
@@ -8,7 +8,6 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @@current_user_id = current_user.id
     type = params[:statusType].to_s.scan(/[A-Z][a-z]+/).first == 'Borrow' ? 'requestee_id' : 'requester_id'
     status = params[:statusType].to_s.scan(/[a-z]+/).first
     @requests = Request.includes(:requestee, :tool, :requester).where("requests.#{type} = ? AND requests.status = ?", current_user.id, status)
@@ -55,7 +54,7 @@ class RequestsController < ApplicationController
     Request.create!(
         tool_use: params[:"request-use"],
         requester_id: params["request"][:requester_id],
-        requestee_id: @@current_user_id,
+        requestee_id: current_user.id,
         status: "pending",
         tool_id: params["request"][:tool_id]
     )

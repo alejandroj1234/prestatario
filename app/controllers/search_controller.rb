@@ -1,15 +1,13 @@
 class SearchController < ApplicationController
   before_action :authenticate_user!
-  protect_from_forgery with: :null_session
+  protect_from_forgery prepend: true
+
+  def mk
+    @base_url = "/search/mk"
+    render :index
+  end
 
   def index
-    @@current_user_id = current_user.id
-
-    def mk
-      @base_url = "/search/mk"
-      render :index
-    end
-
     if params[:keywords].present?
       @keywords = params[:keywords]
 
@@ -30,7 +28,6 @@ class SearchController < ApplicationController
         render json: { tools: @tools }
       }
     end
-
   end
 end
 

@@ -1,6 +1,6 @@
 class ToolsController < ApplicationController
   before_action :authenticate_user!
-  protect_from_forgery with: :null_session
+  protect_from_forgery prepend: true
 
   def ng
     @base_url = "/tools/ng"
@@ -8,8 +8,6 @@ class ToolsController < ApplicationController
   end
 
   def index
-    @@current_user_id = current_user.id
-
     if params[:id].present?
       @tool = Tool.find(params[:id])
       respond_to do |format|
@@ -18,8 +16,7 @@ class ToolsController < ApplicationController
         }
       end
     else
-
-      @tools = Tool.where(user_id: @@current_user_id)
+      @tools = Tool.where(user_id: current_user.id)
       respond_to do |format|
         format.html {
           redirect_to tools_ng_path
@@ -37,7 +34,7 @@ class ToolsController < ApplicationController
       tool_make: params[:"tool-make"],
       tool_model: params[:"tool-model"],
       tool_status: 'notLent',
-      user_id: @@current_user_id
+      user_id: current_user.id
     )
 
     respond_to do |format|
@@ -52,7 +49,7 @@ class ToolsController < ApplicationController
         tool_name: params[:"tool-name"],
         tool_make: params[:"tool-make"],
         tool_model: params[:"tool-model"],
-        user_id: @@current_user_id
+        user_id: current_user.id
     )
 
     respond_to do |format|
@@ -66,8 +63,8 @@ class ToolsController < ApplicationController
     @tool.destroy
 
     respond_to do |format|
-        format.html { render :index }
-        format.json { head :no_content  }
+      format.html { render :index }
+      format.json { head :no_content  }
     end
   end
 end
