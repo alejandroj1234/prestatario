@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Http              } from "@angular/http";
 import { Router            } from "@angular/router";
 import template              from "./template.html";
+import * as $ from "jquery";
 
 var RequestsPendingLend = Component({
     selector: "prestatario-requests-accepted-lent-tools-view",
