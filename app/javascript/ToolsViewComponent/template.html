@@ -2,8 +2,10 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <header>
-                <h1>Manage Your Tools</h1>
-                <button class="btn btn-lg btn-primary pull-right" on-click="addTool()" Add A Tool></button>
+                <div class="col-md-12">
+                    <h1 class="col-md-10 pull-left">Manage Your Tools</h1>
+                    <button id="header-button" class="btn btn-md btn-primary  pull-right" on-click="addTool()">Add A Tool</button>
+                </div>
             </header>
             <table class="table table-striped">
                 <thead>
@@ -20,8 +22,8 @@
                         <td>{{tool.tool_name}}</td>
                         <td>{{tool.tool_make}}</td>
                         <td>{{tool.tool_model}}</td>
-                        <td><button class="btn btn-small btn-primary" on-click="viewDetails(tool)" View Details...></button></td>
-                        <td><button class="btn btn-small btn-primary" on-click="deleteTool(tool)" Delete Tool></button></td>
+                        <td><button class="btn btn-lg btn-primary" on-click="viewDetails(tool)"></button></td>
+                        <td><button class="btn btn-lg btn-primary" on-click="deleteTool(tool)"></button></td>
                     </tr>
                 </tbody>
             </table>

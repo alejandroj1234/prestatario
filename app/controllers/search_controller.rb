@@ -16,6 +16,7 @@ class SearchController < ApplicationController
         tool_search_terms.where_clause,
         tool_search_terms.where_args).
         order(tool_search_terms.order)
+      @tools = @tools.includes(:user)
     else
       @tools = []
     end
@@ -25,7 +26,9 @@ class SearchController < ApplicationController
         redirect_to search_mk_path
       }
       format.json {
-        render json: { tools: @tools }
+        render json: {
+            tools: @tools.as_json(include: [:user])
+        }
       }
     end
   end

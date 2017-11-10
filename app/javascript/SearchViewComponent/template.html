@@ -4,6 +4,7 @@
             <header>
                 <h1>Search for Tools</h1>
             </header>
+            </br>
             <section class="search-form">
                 <form>
                     <label for="keywords" class="sr-only">Keywords</label>
@@ -14,8 +15,6 @@
                        class="form-control input-lg">
                 </form>
             </section>
-            </br>
-            </br>
             </br>
             <table class="table table-striped">
                 <thead>
@@ -32,8 +31,8 @@
                     <td>{{tool.tool_name}}</td>
                     <td>{{tool.tool_make}}</td>
                     <td>{{tool.tool_model}}</td>
-                    <td>{{tool.owner}}</td>
-                    <td><button class="btn btn-small btn-primary" on-click="viewSearchDetails(tool)" View Search></button></td>
+                    <td>{{tool.user.first_name}} {{tool.user.last_name}}</td>
+                    <td><button class="btn btn-lg btn-primary" on-click="viewSearchDetails(tool)"></button></td>
                 </tr>
                 </tbody>
             </table>

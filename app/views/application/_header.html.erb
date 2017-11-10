@@ -4,7 +4,7 @@
       <% if current_page?(root_path) ||
           current_page?(new_user_registration_path) ||
           current_page?(new_user_session_path) ||
-          current_page?(new_user_confirmation_path) ||
+          #current_page?(new_user_confirmation_path) ||
           current_page?(new_user_password_path)
       %>
         <%= link_to 'Prestatario', root_path, class: 'navbar-brand scrollTo', id: 'navbar-brand' %>
@@ -34,7 +34,7 @@
         <% if current_page?(root_path) ||
             current_page?(new_user_registration_path) ||
             current_page?(new_user_session_path) ||
-            current_page?(new_user_confirmation_path) ||
+            #current_page?(new_user_confirmation_path) ||
             current_page?(new_user_password_path)
         %>
           <li><%= link_to "Sign Up", new_user_registration_path %>
