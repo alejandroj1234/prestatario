@@ -10,8 +10,9 @@ class SearchController < ApplicationController
   def index
     if params[:keywords].present?
       @keywords = params[:keywords]
+      @user_id = current_user.id
 
-      tool_search_terms = ToolSearchTerms.new(@keywords)
+      tool_search_terms = ToolSearchTerms.new(@keywords, @user_id)
       @tools = Tool.where(
         tool_search_terms.where_clause,
         tool_search_terms.where_args).

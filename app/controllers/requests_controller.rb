@@ -27,21 +27,18 @@ class RequestsController < ApplicationController
   def update
     @request = Request.find(params[:id])
     @request.update(status: params[:status].to_s)
+    @tool = Tool.find(@request[:tool_id])
 
     if params[:status].to_s == 'accepted'
-      request_id = @request[:id]
-      tool_id = @request[:tool_id]
-      @tool = Tool.find(tool_id)
-
-      @tool.update(
-          tool_status: 'Lent'
-      )
+      @tool.update(tool_status: 'Lent')
 
       BorrowedTool.create!(
-          request_id: request_id,
-          tool_id: tool_id,
+          request_id: @request[:id],
+          tool_id: @request[:tool_id],
           user_id: params[:requestee_id]
       )
+    else
+      @tool.update(tool_status: 'notLent')
     end
 
     respond_to do |format|
@@ -58,6 +55,9 @@ class RequestsController < ApplicationController
         status: "pending",
         tool_id: params["request"][:tool_id]
     )
+
+    @tool = Tool.find(params["request"][:tool_id])
+    @tool.update(tool_status: 'Pending')
 
     respond_to do |format|
       format.html { render :index }
