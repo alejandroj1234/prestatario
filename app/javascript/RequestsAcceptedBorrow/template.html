@@ -1,23 +1,30 @@
 <section>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <ul  class="nav nav-pills">
-                <li><a on-click="viewRequestsAcceptedBorrow()" data-toggle="tab">Accepted Borrowed Requests</a>
-                </li>
-                <li><a on-click="viewRequestsPendingBorrow()" data-toggle="tab">Pending Borrowed Requests</a>
-                </li>
-                <li><a on-click="viewRequestsRejectedBorrow()" data-toggle="tab">Rejected Borrowed Requests</a>
-                </li>
-                <li><a on-click="viewRequestsAcceptedLend()" data-toggle="tab">Accepted Lent Requests</a>
-                </li>
-                <li><a on-click="viewRequestsPendingLend()" data-toggle="tab">Pending Lent Requests</a>
-                </li>
-                <li><a on-click="viewRequestsRejectedLend()" data-toggle="tab">Rejected Lent Requests</a>
-                </li>
-            </ul>
-            <header>
-                <h1>Manage Your Accepted Borrow Requests</h1>
-            </header>
+            <div class="col-md-12">
+                <h1 class="col-md-10 pull-left">Manage Your Accepted Borrow Requests</h1>
+                <div class="dropdown pull-right">
+                    <button id="header-button" class="btn btn-primary btn-md dropdown-toggle" type="button" data-toggle="dropdown">Request Type<span class="caret"></span></button>
+                    <ul class="dropdown-menu pull-right">
+                        <li class="dropdown-submenu">
+                            <a id="requests-drop-down" class="btn btn-primary btn-sm" tabindex="-1" href="#">Lend Requests<span class="caret"></span></a>
+                            <ul class="dropdown-menu ">
+                                <li><a class="btn btn-primary btn-sm" on-click="viewRequestsAcceptedLend()" data-toggle="tab">Accepted Lend Requests</a>
+                                <li><a class="btn btn-primary btn-sm" on-click="viewRequestsPendingLend()" data-toggle="tab">Pending Lend Requests</a>
+                                <li><a class="btn btn-primary btn-sm" on-click="viewRequestsRejectedLend()" data-toggle="tab">Rejected Lend Requests</a>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a id="requests-drop-down" class="btn btn-primary btn-sm" tabindex="-1" href="#">Borrow Requests<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="btn btn-primary btn-sm" on-click="viewRequestsAcceptedBorrow()"  data-toggle="tab">Accepted Borrow Requests</a>
+                                <li><a class="btn btn-primary btn-sm" on-click="viewRequestsPendingBorrow()" data-toggle="tab">Pending Borrow Requests</a>
+                                <li><a class="btn btn-primary btn-sm" on-click="viewRequestsRejectedBorrow()" data-toggle="tab">Rejected Borrow Requests</a>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -37,4 +44,8 @@
         </div>
     </div>
 </section>
+
+
+
+
 

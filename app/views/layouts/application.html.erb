@@ -15,14 +15,6 @@
 
   <body id="main-content-body">
 
-    <% if notice.present? %>
-      <div class="alert alert-info" id="alert-info">
-        <a href = "#" class = "close" data-dismiss = "alert-info">
-          &times;
-        </a>
-        <%= notice %>
-      </div>
-    <% end %>
     <% if alert.present? %>
       <div class="alert alert-danger" id="alert-danger">
         <a href = "#" class = "close" data-dismiss = "alert">

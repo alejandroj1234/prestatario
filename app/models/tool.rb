@@ -1,4 +1,4 @@
 class Tool < ApplicationRecord
 
-  has_one :users
+  belongs_to :user
 end
