@@ -2,6 +2,7 @@
   "name": "prestatario",
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.2",
     "@angular/common": "^4.4.6",
     "@angular/compiler": "^4.4.6",
     "@angular/core": "^4.4.6",

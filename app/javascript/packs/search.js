@@ -3,8 +3,10 @@ import { Component, NgModule              } from "@angular/core";
 import { BrowserModule                    } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { platformBrowserDynamic           } from "@angular/platform-browser-dynamic";
-import { HttpModule                       } from "@angular/http";
 import { RouterModule                     } from "@angular/router";
+import {HttpClientModule} from '@angular/common/http';
+import { AgmCoreModule } from '@agm/core';
+
 
 import { SearchViewComponent    } from "SearchViewComponent";
 import { SearchDetailsComponent } from "SearchDetailsComponent";
@@ -35,7 +37,10 @@ var SearchAppModule = NgModule({
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyCdbhcWxslK_UA66M-YWpigIcpvQejBnGM'
+        }),
+        HttpClientModule,
         routing
     ],
     declarations:   [

@@ -1,5 +1,5 @@
 import { Component         } from "@angular/core";
-import { Http              } from "@angular/http";
+import { HttpClient } from '@angular/common/http';
 import { Router            } from "@angular/router";
 import template              from "./template.html";
 
@@ -8,7 +8,7 @@ var SearchViewComponent = Component({
     template: template
 }).Class({
     constructor: [
-        Http,
+        HttpClient,
         Router,
         function(http, router) {
             this.tools    = null;
@@ -29,9 +29,7 @@ var SearchViewComponent = Component({
         self.http.get(
             "/search.json?keywords=" + self.keywords
         ).subscribe(
-            function(response) {
-                self.tools = response.json().tools;
-            }
+            data => {self.tools = data['tools']}
         );
     }
 });

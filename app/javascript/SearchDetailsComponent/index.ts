@@ -1,5 +1,5 @@
 import { Component       } from "@angular/core";
-import { Http            } from "@angular/http";
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute  } from "@angular/router";
 import template            from "./template.html";
 
@@ -8,13 +8,14 @@ var SearchDetailsComponent = Component({
     template: template
 }).Class({
     constructor: [
-        Http,
+        HttpClient,
         ActivatedRoute,
         function(http, activatedRoute) {
             this.activatedRoute = activatedRoute;
             this.http           = http;
             this.id             = null;
             this.tool           = null;
+            this.profile        = null;
         }
     ],
     ngOnInit: function()  {
@@ -25,18 +26,25 @@ var SearchDetailsComponent = Component({
             self.http.get(
                 "/tools.json?id=" + self.id
             ).subscribe(
-                function(response) {
-                    self.tool = response.json().tool;
+                data => { self.tool = data['tool']
+                self.http.get(
+                    "/profiles.json?user_id=" + self.tool.user_id
+                ).subscribe(
+                    data => {
+                    self.profile = data['profile'];
+                    self.street = data['profile']['street'].toString();
+                    self.city = data['profile']['city'].toString();
+                    self.state = data['profile']['state'].toString();
                     self.http.get(
-                        "/profiles.json?user_id=" + self.tool.user_id
+                        `https://maps.googleapis.com/maps/api/geocode/json?address=${self.street},+${self.city},+${self.state}&key=AIzaSyCdbhcWxslK_UA66M-YWpigIcpvQejBnGM`
                     ).subscribe(
-                        function(response) {
-                            self.profile = response.json().profile;
+                        data => {
+                            self.lat = data['results'][0]['geometry']['location']['lat']
+                            self.lng = data['results'][0]['geometry']['location']['lng']
                         }
-                    )
-                }
-
-            );
+                    )}
+                )}
+            )
         })
     },
     onSubmit(form: any) {
@@ -45,11 +53,7 @@ var SearchDetailsComponent = Component({
         form["requester_id"] = self.tool.user_id;
         self.http.post(
             "/requests", form
-        ).subscribe(
-            function(response) {
-
-            }
-        );
+        ).subscribe();
     },
 });
 

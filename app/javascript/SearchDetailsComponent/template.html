@@ -19,10 +19,6 @@
                 <p class="list-group-item">{{profile.first_name}}</p>
                 <p class="list-group-item">{{profile.last_name}}</p>
                 <p class="list-group-item">{{profile.phone}}</p>
-            </div>
-        </div>
-        <div class="col-md-10 col-md-offset-1">
-            <div class="list-group col-md-4 pull-right">
                 <h4 class="page-header">Request To Borrow</h4>
                 <form #requestTool="ngForm" (ngSubmit)="onSubmit(requestTool.value); requestTool.reset()">
                     <div class="form-group float-label-control">
@@ -31,6 +27,17 @@
                     </div>
                     <button class="btn btn-lg btn-primary pull-right" type="submit">Submit Request</button>
                 </form>
+            </div>
+            <div class="list-group col-md-4 pull-left">
+                <h3>Location of Tool</h3>
+                <agm-map [latitude]="lat" [longitude]="lng">
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
+            </div>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="list-group col-md-4 pull-right">
+
             </div>
         </div>
     </div>
