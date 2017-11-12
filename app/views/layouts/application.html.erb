@@ -3,6 +3,8 @@
   <head>
     <title>Prestatario</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_pack_tag "application" %>
@@ -28,11 +30,11 @@
 
     <div id="main-container" class="container-fluid clearfix">
       <div class="row">
-        <div  class="col-md-2 pull-left" >
+        <div id="main-container-sidebar"  class="col-md-2 pull-left" >
           <%= render "sidebar" %>
         </div>
 
-        <div class="col-md-10 pull-right">
+        <div id="main-container-body" class="col-md-10 pull-right">
           <%= yield %>
         </div>
       </div>

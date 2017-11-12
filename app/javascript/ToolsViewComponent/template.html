@@ -1,33 +1,34 @@
 <section>
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-10 col-md-offset-1" id="angular_body">
             <header>
                 <div class="col-md-12">
                     <h1 class="col-md-10 pull-left">Manage Your Tools</h1>
                     <button id="header-button" class="btn btn-md btn-primary  pull-right" on-click="addTool()">Add A Tool</button>
                 </div>
             </header>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Tool Name</th>
-                        <th>Tool Make</th>
-                        <th>Tool Model</th>
-                        <th>View Details</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let tool of tools">
-                        <td>{{tool.tool_name}}</td>
-                        <td>{{tool.tool_make}}</td>
-                        <td>{{tool.tool_model}}</td>
-                        <td><button class="btn btn-lg btn-primary" on-click="viewDetails(tool)"></button></td>
-                        <td><button class="btn btn-lg btn-primary" on-click="deleteTool(tool)"></button></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="col-md-12">
+                <ol class="list-group" *ngFor="let tool of tools" id="tools-table">
+                    <li class="list-group-item clearfix" id="tools-table-rows">
+                        <h3 class="pull-right">
+                            <small class="text-uppercase">Status: </small>{{tool.tool_status}}
+                            <td class="tools-table-buttons"><button class="btn btn-sm btn-primary" on-click="viewDetails(tool)">View Details</button></td>
+                            <td class="tools-table-buttons"><button class="btn btn-sm btn-primary" on-click="deleteTool(tool)">Delete Tool</button></td>
+                        </h3>
+                        <h2 class="h3">
+                            <small class="text-uppercase">Name: </small>{{tool.tool_name}}
+                        </h2>
+                        <h4>
+                            <small>Make: </small>{{tool.tool_make}} | <small>Model: </small>{{tool.tool_model}}
+                        </h4>
+                    </li>
+                </ol>
+            </div>
         </div>
     </div>
 </section>
+
+
+
+
 

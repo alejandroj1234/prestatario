@@ -38,7 +38,7 @@ class RequestsController < ApplicationController
           user_id: params[:requestee_id]
       )
     else
-      @tool.update(tool_status: 'notLent')
+      @tool.update(tool_status: 'available')
     end
 
     respond_to do |format|

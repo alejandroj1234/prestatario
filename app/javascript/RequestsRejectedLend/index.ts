@@ -44,13 +44,6 @@ var RequestsRejectedLend = Component({
                 self.requests = response.json().requests;
             }
         );
-        $(document).ready(function(){
-            $('.dropdown-submenu a#requests-drop-down').on("click", function(e){
-                $(this).next('ul').toggle();
-                e.stopPropagation();
-                e.preventDefault();
-            });
-        });
     }
 });
 

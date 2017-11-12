@@ -25,26 +25,23 @@
                     </ul>
                 </div>
             </div>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Tool Name</th>
-                    <th>Requestee's Name</th>
-                    <th>Request Description</th>
-                    <th>Accept Request</th>
-                    <th>Decline Request</th>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let request of requests" >
-                        <td>{{request.tool.tool_name}}</td>
-                        <td>{{request.requestee.first_name}}</td>
-                        <td>{{request.tool_use}}</td>
-                        <td><button class="btn btn-lg btn-primary" on-click="acceptRequest(request)"></button></td>
-                        <td><button class="btn btn-lg btn-primary" on-click="rejectRequest(request)"></button></td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="col-md-12">
+                <ol class="list-group" *ngFor="let request of requests" id="tools-table">
+                    <li class="list-group-item clearfix" id="tools-table-rows">
+                        <h3 class="pull-right">
+                            <small class="text-uppercase">Tool Use: </small>{{request.tool_use}}
+                            <td class="tools-table-buttons"><button class="btn btn-sm btn-primary" on-click="acceptRequest(request)">Accept Request</button></td>
+                            <td class="tools-table-buttons"><button class="btn btn-sm btn-primary" on-click="rejectRequest(request)">Reject Request</button></td>
+                        </h3>
+                        <h2 class="h3">
+                            <small class="text-uppercase">Name: </small>{{request.tool.tool_name}}
+                        </h2>
+                        <h4>
+                            <small>Make: </small>{{request.tool.tool_make}} | <small>Model: </small>{{request.tool.tool_model}}
+                        </h4>
+                    </li>
+                </ol>
+            </div>
         </div>
     </div>
 </section>

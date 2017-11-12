@@ -15,7 +15,7 @@ class LentToolsController < ApplicationController
   def update
     @tool = Tool.find(params[:id])
     @tool.update(
-        tool_status: 'notLent'
+        tool_status: 'available'
     )
     @borrowed_tool = BorrowedTool.where(tool_id: params[:id])
     @borrowed_tool.first.destroy
