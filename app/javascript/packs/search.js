@@ -4,8 +4,8 @@ import { BrowserModule                    } from "@angular/platform-browser";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { platformBrowserDynamic           } from "@angular/platform-browser-dynamic";
 import { RouterModule                     } from "@angular/router";
-import {HttpClientModule} from '@angular/common/http';
-import { AgmCoreModule } from '@agm/core';
+import { HttpClientModule                 } from '@angular/common/http';
+import { AgmCoreModule                    } from '@agm/core';
 
 
 import { SearchViewComponent    } from "SearchViewComponent";

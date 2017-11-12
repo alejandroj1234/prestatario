@@ -59,9 +59,13 @@ class RequestsController < ApplicationController
     @tool = Tool.find(params["request"][:tool_id])
     @tool.update(tool_status: 'Pending')
 
+    @requester = User.find(params["request"][:requester_id])
+    @requestee = User.find(current_user.id)
+    RequestsMailer.request_tool_email(@requester, @requestee, @tool).deliver
+
     respond_to do |format|
-      format.html { render :index }
-      format.json { head :no_content  }
+      format.html
+      format.json
     end
   end
 end

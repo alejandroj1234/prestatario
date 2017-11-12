@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { Http              } from "@angular/http";
+import { Component         } from "@angular/core";
+import { HttpClient        } from '@angular/common/http';
 import { Router            } from "@angular/router";
 import template              from "./template.html";
 
@@ -8,7 +8,7 @@ var ToolsViewComponent = Component({
     template: template
 }).Class({
     constructor: [
-        Http,
+        HttpClient,
         Router,
         function(http, router) {
             this.tools  = null;
@@ -27,9 +27,7 @@ var ToolsViewComponent = Component({
         self.http.get(
             "/tools.json"
         ).subscribe(
-            function(response) {
-                self.tools = response.json().tools;
-            }
+            data => { self.tools = data['tools']}
         );
     },
     deleteTool: function(tool) {
@@ -37,9 +35,7 @@ var ToolsViewComponent = Component({
         self.http.delete(
             "/tools/" + tool.id
         ).subscribe(
-            function() {
-                self.ngOnInit()
-            }
+            data => { self.ngOnInit() }
         );
     }
 });

@@ -38,8 +38,8 @@ class ToolsController < ApplicationController
     )
 
     respond_to do |format|
-      format.html { render :index }
-      format.json { head :no_content  }
+      format.html
+      format.json
     end
   end
 
@@ -53,8 +53,8 @@ class ToolsController < ApplicationController
     )
 
     respond_to do |format|
-      format.html { render :index }
-      format.json { head :no_content  }
+      format.html
+      format.json
     end
   end
 
@@ -63,8 +63,8 @@ class ToolsController < ApplicationController
     @tool.destroy
 
     respond_to do |format|
-      format.html { render :index }
-      format.json { head :no_content  }
+      format.html
+      format.json
     end
   end
 end

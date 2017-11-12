@@ -1,5 +1,5 @@
 import { Component       } from "@angular/core";
-import { Http            } from "@angular/http";
+import { HttpClient      } from '@angular/common/http';
 import { ActivatedRoute  } from "@angular/router";
 import template            from "./template.html";
 
@@ -8,7 +8,7 @@ var ToolsAddToolComponent = Component({
     template: template
 }).Class({
     constructor: [
-        Http,
+        HttpClient,
         ActivatedRoute,
         function(http, activatedRoute) {
             this.activatedRoute = activatedRoute;
@@ -21,9 +21,7 @@ var ToolsAddToolComponent = Component({
         self.http.post(
             "/tools/ng/addTool", form
         ).subscribe(
-            function(response) {
 
-            }
         );
     },
 });

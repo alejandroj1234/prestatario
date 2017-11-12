@@ -1,5 +1,5 @@
 import { Component       } from "@angular/core";
-import { Http            } from "@angular/http";
+import { HttpClient      } from '@angular/common/http';
 import { ActivatedRoute  } from "@angular/router";
 import template            from "./template.html";
 
@@ -8,7 +8,7 @@ var ToolsDetailsComponent = Component({
     template: template
 }).Class({
     constructor: [
-        Http,
+        HttpClient,
         ActivatedRoute,
         function(http, activatedRoute) {
             this.activatedRoute = activatedRoute;
@@ -24,11 +24,9 @@ var ToolsDetailsComponent = Component({
             self.http.get(
                 "/tools.json?id=" + self.id
             ).subscribe(
-                function(response) {
-                    self.tool = response.json().tool;
-                }
+                data => { self.tool = data['tool'] }
             );
-        })
+        });
     },
     onSubmit(form: any) {
         var self = this;
@@ -37,15 +35,9 @@ var ToolsDetailsComponent = Component({
             self.id = id;
             self.http.put(
             "/tools/ng/viewTools/" + self.id, form
-            ).subscribe(
-                function(response) {
-
-                }
-            );
+            ).subscribe();
         })
-
     },
-
 });
 
 export { ToolsDetailsComponent };

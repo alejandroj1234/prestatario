@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @requester.first_name%> <%=@requester.last_name%></h1>
+    <p>
+      <%= @requestee.first_name %> <%= @requestee.last_name %> has requested to borrow <%= @tool.tool_name %> from you!
+    </p>
+    <p>
+    To accept or reject the request, please log into your account.
+    </p>
+  </body>
+</html>
