@@ -1,10 +1,5 @@
 Rails.application.routes.draw do
 
-  # Needed to change path for editing user account
-  devise_scope :user do
-    get "/edit_user" => "devise/registrations#edit", as: "edit_user_registration" # custom path to sign_up/registration
-  end
-
   # list all the controllers for device
   devise_for :users, :controllers => {
       confirmations: "users/confirmations",
