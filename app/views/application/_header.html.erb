@@ -1,26 +1,12 @@
 <div class="navbar navbar-default " role="navigation" id="navbar">
   <div class="container">
     <div class="navbar-header">
-      <% if current_page?(root_path) ||
-          current_page?(new_user_registration_path) ||
-          current_page?(new_user_session_path) ||
-          #current_page?(new_user_confirmation_path) ||
-          current_page?(new_user_password_path)
-      %>
-        <%= link_to 'Prestatario', root_path, class: 'navbar-brand scrollTo', id: 'navbar-brand' %>
-      <% end %>
-      <% if current_page?(dashboard_path) ||
-          current_page?(borrowed_tools_path) ||
-          current_page?(lent_tools_path) ||
-          current_page?(search_mk_path) ||
-          current_page?(tools_ng_path) ||
-          current_page?(requests_rq_path) ||
-          current_page?(edit_user_registration_path)
-      %>
-        <%= link_to 'Prestatario', dashboard_path, class: 'navbar-brand scrollTo', id: 'navbar-brand' %>
+      <% if user_signed_in? %>
+          <%= link_to 'Prestatario', dashboard_path, class: 'navbar-brand scrollTo', id: 'navbar-brand' %>
+      <% else %>
+          <%= link_to 'Prestatario', root_path, class: 'navbar-brand scrollTo', id: 'navbar-brand' %>
       <% end %>
     </div>
-
     <div class="navbar-collapse collapse" id="navigation">
       <ul class="nav navbar-nav navbar-right">
         <% if current_page?(root_path) %>
@@ -31,31 +17,18 @@
           <li><a href="#section3">Contact</a>
           </li>
         <% end %>
-        <% if current_page?(root_path) ||
-            current_page?(new_user_registration_path) ||
-            current_page?(new_user_session_path) ||
-            #current_page?(new_user_confirmation_path) ||
-            current_page?(new_user_password_path)
-        %>
-          <li><%= link_to "Sign Up", new_user_registration_path %>
-          </li>
-          <li><%= link_to "Log In", new_user_session_path %>
-          </li>
-        <% end %>
-        <% if current_page?(dashboard_path) ||
-            current_page?(borrowed_tools_path) ||
-            current_page?(lent_tools_path) ||
-            current_page?(search_mk_path) ||
-            current_page?(tools_ng_path) ||
-            current_page?(requests_rq_path) ||
-            current_page?(edit_user_registration_path)
-        %>
+        <% if user_signed_in? %>
           <li>
             <%= link_to "Account", edit_user_registration_path %>
           </li>
           <li>
             <%= link_to "Log Out", destroy_user_session_path, method: :get %>
           </li>
+        <% else %>
+            <li><%= link_to "Sign Up", new_user_registration_path %>
+            </li>
+            <li><%= link_to "Log In", new_user_session_path %>
+            </li>
         <% end %>
       </ul>
     </div>
